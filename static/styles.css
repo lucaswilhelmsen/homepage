@@ -1,3 +1,13 @@
+@font-face {
+    font-family: 'Montserrat Extra Light';
+    src: url('../static/Montserrat-ExtraLight.otf') format('opentype');
+}
+
+@font-face {
+    font-family: 'Montserrat SemiBold';
+    src: url('../static/Montserrat-SemiBold.ttf') format('truetype');
+}
+
 #left-black-rectangle {
     color: black;
     background-color: black;
@@ -255,6 +265,7 @@ button {
 
 body {
     background-color: grey;
+    font-family: 'Montserrat Extra Light', Arial, sans-serif;
 }
 
 .black-vertical-bar {
@@ -420,6 +431,27 @@ body {
     transition: opacity 0.1s ease;
 }
 
+#smugface1 {
+    transform-origin: center 350%;
+}
+
+#smugdance {
+    position: absolute;
+    top: 0;
+    left: 0px;
+    width: 240px;
+    height: 240px;
+    border-radius: 50%;
+    object-fit: cover;
+    opacity: 0;
+    transition: opacity 0.1s ease;
+    z-index: 102;
+}
+
+#smugdance.show {
+    opacity: 1;
+}
+
 .smugface.show {
     opacity: 1;
 }
@@ -457,23 +489,20 @@ body {
     margin: 0 0 5px 0;
     color: white;
     font-size: 20px;
-    font-weight: bold;
-    font-family: Arial, sans-serif;
+    font-family: 'Montserrat SemiBold', 'Montserrat Extra Light', Arial, sans-serif;
 }
 
 .profile-username {
     margin: 0 0 20px 0;
     color: white;
     font-size: 14px;
-    font-family: Arial, sans-serif;
 }
 
 .profile-title {
     margin: 0 0 15px 0;
     color: white;
     font-size: 20px;
-    font-weight: bold;
-    font-family: Arial, sans-serif;
+    font-family: 'Montserrat SemiBold', 'Montserrat Extra Light', Arial, sans-serif;
 }
 
 .social-item {
@@ -529,7 +558,6 @@ body {
 .social-text {
     color: white;
     font-size: 14px;
-    font-family: Arial, sans-serif;
     text-decoration: none;
 }
 
@@ -547,8 +575,7 @@ a.social-text:active {
     top: 2.5%;
     color: white;
     font-size: 48px;
-    font-weight: bold;
-    font-family: Arial, sans-serif;
+    font-family: 'Montserrat SemiBold', 'Montserrat Extra Light', Arial, sans-serif;
     z-index: 101;
     user-select: none;
     cursor: default;
@@ -624,7 +651,7 @@ a.social-text:active {
 .project-title {
     margin: 0 0 15px 0;
     font-size: 20px;
-    font-weight: bold;
+    font-family: 'Montserrat SemiBold', 'Montserrat Extra Light', Arial, sans-serif;
 color: white;
     color: white;
 }
@@ -724,7 +751,7 @@ color: white;
 }
 
 .rect6 .project-tech {
-    margin-top: 30px;
+    margin-top: 10px;
 }
 
 .project-link {

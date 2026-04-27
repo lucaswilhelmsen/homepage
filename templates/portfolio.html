@@ -19,12 +19,44 @@
                 console.log('Background clicked');
             }
 
+            let clickCount = 0;
+            let isAnimating = false;
+
             function showSmugface() {
-                const smugface = document.getElementById('smugface');
-                smugface.classList.add('show');
-                setTimeout(() => {
-                    smugface.classList.remove('show');
-                }, 1000);
+                if (isAnimating) return;
+                
+                clickCount++;
+                if (clickCount === 1) {
+                    isAnimating = true;
+                    const smugface = document.getElementById('smugface');
+                    smugface.classList.add('show');
+                    setTimeout(() => {
+                        smugface.classList.remove('show');
+                        isAnimating = false;
+                    }, 1000);
+                } else if (clickCount === 2) {
+                    isAnimating = true;
+                    const smugface1 = document.getElementById('smugface1');
+                    smugface1.classList.add('show');
+                    setTimeout(() => {
+                        smugface1.classList.remove('show');
+                        isAnimating = false;
+                    }, 1000);
+                } else if (clickCount === 3) {
+                    isAnimating = true;
+                    const smugdance = document.getElementById('smugdance');
+                    const profilePic = document.querySelector('.profile-picture');
+                    profilePic.src = '../static/noprofile.png';
+                    profilePic.removeAttribute('onclick');
+                    smugdance.classList.add('show');
+                    smugdance.currentTime = 0;
+                    smugdance.onended = function() {
+                        smugdance.classList.remove('show');
+                        clickCount = 0;
+                        isAnimating = false;
+                    };
+                    smugdance.play();
+                }
             }
 
             function typeWriter() {
@@ -68,6 +100,8 @@
         <img src="../static/picture.png" alt="Profile Picture" class="profile-picture" onclick="showSmugface()">
         <div class="smugface-container">
             <img src="../static/smugface.jpg" alt="Smug Face" class="smugface" id="smugface">
+            <img src="../static/smugface1.jpg" alt="Smug Face" class="smugface" id="smugface1">
+            <video src="../static/smugdance.mp4" id="smugdance" muted playsinline></video>
         </div>
         <div class="profile-info">
             <h2 class="profile-name">Lucas V. Wilhelmsen</h2>
@@ -120,7 +154,7 @@
         <div class="jumping-rect rect3">
             <div class="project-content">
                 <h3 class="project-title">Video Automation Tool</h3>
-                <p class="project-description">Built a Python automation program integrating external APIs to upload video content<br><span class="bullet-point">Reduced manual workload by 20%</span><br><span class="bullet-point">Implemented authentication, scheduling, and file handling</span></p>
+                <p class="project-description">Built a Python automation program integrating external APIs to upload video content<br><span class="bullet-point">Reduced manual workload by 20%</span><br><span class="bullet-point">Introduced authentication, scheduling, and file handling</span></p>
                 <div class="project-tech-container">
                     <span class="project-tech">Python</span>
                 </div>
