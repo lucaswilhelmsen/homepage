@@ -3,62 +3,150 @@
 <html lang="en">
     <head>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-        <link href="static/styles.css" rel="stylesheet">
-        <title>Portfolio</title>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmX5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+        <link href="../static/styles.css" rel="stylesheet">
+        <script>
+            function handleBackgroundClick(event) {
+                event.preventDefault();
+                // Clear any text selection when clicking background
+                if (window.getSelection) {
+                    window.getSelection().removeAllRanges();
+                } else if (document.selection) {
+                    document.selection.empty();
+                }
+                // Add your desired action here, e.g.:
+                // window.location.href = 'https://your-link.com';
+                console.log('Background clicked');
+            }
+
+            function showSmugface() {
+                const smugface = document.getElementById('smugface');
+                smugface.classList.add('show');
+                setTimeout(() => {
+                    smugface.classList.remove('show');
+                }, 1000);
+            }
+
+            function typeWriter() {
+                const workText = document.querySelector('.work-text');
+                const textToType = 'Labor Omnia Vincit.';
+                const finalText = 'Work.';
+                let index = 0;
+                
+                workText.textContent = '';
+                workText.style.opacity = '1';
+                
+                function type() {
+                    if (index < textToType.length) {
+                        workText.innerHTML = textToType.substring(0, index + 1) + '<span style="position: relative; top: -5px;">|</span>';
+                        index++;
+                        // Vary the typing speed randomly between 100ms and 300ms
+                        const randomSpeed = Math.floor(Math.random() * 200) + 100;
+                        setTimeout(type, randomSpeed);
+                    } else {
+                        workText.textContent = textToType;
+                        setTimeout(() => {
+                            workText.textContent = finalText;
+                        }, 2000);
+                    }
+                }
+                
+                type();
+            }
+
+            window.addEventListener('load', typeWriter);
+        </script>
     </head>
     <body>
 
-        <form action="/index" method="GET">
-            <button class="back-portfolio-element text-size" id="back-to-main-page">Back to main page</button>
-        </form>
-
-        <div id="black-rectangle-portfolio">
-            
-        </div>
-        <div class="grey-complete">
-            
+        <div class="background-link" onclick="handleBackgroundClick(event)">
+        <video class="background-video" autoplay muted loop playsinline>
+            <source src="../static/water.mp4" type="video/mp4">
+        </video>
         </div>
 
-        <div class="white-line-vertical">
-            
+        <img src="../static/picture.png" alt="Profile Picture" class="profile-picture" onclick="showSmugface()">
+        <div class="smugface-container">
+            <img src="../static/smugface.jpg" alt="Smug Face" class="smugface" id="smugface">
         </div>
-
-        <div class="white-line-horizontal">
-            
+        <div class="profile-info">
+            <h2 class="profile-name">Lucas V. Wilhelmsen</h2>
+            <p class="profile-username">@lucasvwilhelm</p>
+            <p class="profile-title">Full-stack Developer</p>
+            <a class="social-item social-item--link" href="https://homepage-edvl.onrender.com" target="_blank">
+                <span class="social-icon-wrap">
+                    <img src="../static/link-symbol.png" alt="Link" class="social-icon social-icon--link">
+                </span>
+                <span class="social-text">homepage-edvl.onrender.com</span>
+            </a>
+            <div class="social-item">
+                <span class="social-icon-wrap">
+                    <img src="../static/location.png" alt="Location" class="social-icon social-icon--static social-icon--location">
+                </span>
+                <span class="social-text">Copenhagen, Denmark</span>
+            </div>
         </div>
-
-        <div class="second-white-line-horizontal">
-            
-        </div>
-
-        {% for portfolio_item in portfolio %}
-        
-        <img class="image-location-portfolio" src="{{ portfolio_item['image-address'] }}" alt="Missing image">
-        <h1 class="portfolio-title">{{ portfolio_item['portfolio-item'] }}</h1>
-
-        <a href="{{ portfolio_item['github-link'] }}" class="github-repository text-size">
-            GitHub Repository
+        <div class="work-text">Work.</div>
+        <a href="https://github.com/lucaswilhelmsen/Blue-Light-Filter" target="_blank" class="project-link">
+            <div class="jumping-rect rect1">
+                <div class="project-content">
+                    <h3 class="project-title">Blue Light Filter App</h3>
+                    <p class="project-description">Strongest possible blue light filter app. Provides the maximum improvement to sleep quality, digital fatigue, and eye strain caused by blue light.</p>
+                    <div class="project-tech-container">
+                        <span class="project-tech">Python</span>
+                        <span class="project-tech">Electron</span>
+                        <span class="project-tech">Node.js</span>
+                        <span class="project-tech">HTML5</span>
+                        <span class="project-tech">CSS</span>
+                        <span class="project-tech">JavaScript</span>
+                    </div>
+                </div>
+            </div>
         </a>
+        <a href="https://github.com/lucaswilhelmsen/homepage" target="_blank" class="project-link">
+            <div class="jumping-rect rect2">
+                <div class="project-content">
+                    <h3 class="project-title">Homepage</h3>
+                    <p class="project-description">A personal portfolio website showcasing projects and skills with modern design and interactive features.</p>
+                    <div class="project-tech-container">
+                        <span class="project-tech">SQL</span>
+                        <span class="project-tech">HTML5</span>
+                        <span class="project-tech">CSS</span>
+                        <span class="project-tech">JavaScript</span>
+                    </div>
+                </div>
+            </div>
+        </a>
+        <div class="jumping-rect rect3">
+            <div class="project-content">
+                <h3 class="project-title">Video Automation Tool</h3>
+                <p class="project-description">Built a Python automation program integrating external APIs to upload video content<br><span class="bullet-point">Reduced manual workload by 20%</span><br><span class="bullet-point">Implemented authentication, scheduling, and file handling</span></p>
+                <div class="project-tech-container">
+                    <span class="project-tech">Python</span>
+                </div>
+            </div>
+        </div>
+        <div class="jumping-rect rect4">
+            <div class="project-content">
+                <h3 class="project-title">Hydration Tracker (CLI App)</h3>
+                <p class="project-description"><span class="bullet-point">Developed a Python-based terminal app</span><br>with user input handling<br><span class="bullet-point">Designed logic for adjusting to user needs</span><br><span class="bullet-point">Reminders to automate hydration for users</span></p>
+                <span class="project-tech">Python</span>
+            </div>
+        </div>
+        <div class="jumping-rect rect5">
+            <div class="project-content">
+                <h3 class="project-title">Lorem Ipsum</h3>
+                <p class="project-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                <span class="project-tech">Virgil</span>
+            </div>
+        </div>
+        <div class="jumping-rect rect6">
+            <div class="project-content">
+                <h3 class="project-title">Dolor Sit Amet</h3>
+                <p class="project-description">Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                <span class="project-tech">Homer</span>
+            </div>
+        </div>
 
-        <h1 class="README-header">
-            README
-        </h1>
-        <p class="README">
-            {{ portfolio_item['readme']|add_linebreak|safe }}
-        </p>
-        {% endfor %}
-
-        <script>
-            document.getElementById("back-to-main-page").addEventListener("mouseover", function () {
-            document.getElementById("back-to-main-page").style.textDecoration = "underline";
-        });
-
-            document.getElementById("back-to-main-page").addEventListener("mouseout", function () {
-            document.getElementById("back-to-main-page").style.textDecoration = "none";
-        });
-        
-        </script>
-    </body>
+            </body>
 </html>
-
