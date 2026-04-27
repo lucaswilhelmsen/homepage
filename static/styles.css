@@ -8,6 +8,16 @@
     src: url('../static/Montserrat-SemiBold.ttf') format('truetype');
 }
 
+@font-face {
+    font-family: 'Montserrat Extra Light';
+    src: url('../static/Montserrat-ExtraLight.otf') format('opentype');
+}
+
+@font-face {
+    font-family: 'Montserrat SemiBold';
+    src: url('../static/Montserrat-SemiBold.ttf') format('truetype');
+}
+
 #left-black-rectangle {
     color: black;
     background-color: black;
@@ -266,6 +276,7 @@ button {
 body {
     background-color: grey;
     font-family: 'Montserrat Extra Light', Arial, sans-serif;
+    font-family: 'Montserrat Extra Light', Arial, sans-serif;
 }
 
 .black-vertical-bar {
@@ -429,6 +440,19 @@ body {
     transform: scale(1.3);
     transform-origin: center 30%;
     transition: opacity 0.1s ease;
+}
+
+#smugface1 {
+    transform-origin: center 350%;
+}
+
+#smugdance {
+    transform-origin: center center;
+    transform: scale(1);
+    z-index: 102;
+    width: 240px;
+    height: 240px;
+    object-fit: cover;
 }
 
 #smugface1 {
