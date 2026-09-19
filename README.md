@@ -1,0 +1,22 @@
+# Personal Website
+#### Video Demo: https://www.youtube.com/watch?v=1uPhEY76fII
+#### Description:
+For my final project in CS50x, I decided to heavily expand on the idea of creating 
+a personal site, in order to showcase my current and future portfolio items in the purview of 
+software development and document my own improvement. To this end I have built a full-stack web application. Using a broad techstack that we've used both in class, 
+as well as technologies mostly relating to the backend that I've taught myself making 
+this project. 
+
+For the frontend I use HTML, CSS and Javascript. I had orginally planned on using Github pages, but as they're for static sites I switched to Render's web service to host my frontend. Ultimately this also proved beneficial, as I could then centralize both my frontend and backend on Render using two of their services. I decided for a clean, sleek, mostly black and white design with a left vertical bar for navigation. I had originally planned on augmenting it using Bootstrap, which I still might introduce in subsequent versions, but for now I have created everything from scratch. To this end I have a rather large collection of self-created CSS classes and IDs that are dynamic and correspond to whatever device the user might be on. I debated with myself how to achieve a universal look across devices. Now I am by and large using percentages of the user's screen, which proved to have the desired effect. Inspired by both CS50x and Apple I aimed for a design that's both elegant and understated.
+
+I have a "templates" folder which contains all of the pages the user navigates through, as well as a static folder for 
+everything image-related. The Javascript I've implemented allows for the user to use 
+the icons as links, and to have a more responsive effect when the user hovers over links
+for other pages. Furthermore I've implemented a greeting to make the main page of the 
+site more welcoming, and to make it stand out when compared to the other pages, where I will add more and perhaps content of a different purview at a latter date. 
+
+I have put my final project for cs50x on there (this one), and the ultimate goal is that in time, with more software development portfolio items, they will each be stacked on top of one another - thus creating a kind of "feed" effect. Currently the user can only go back to the main page at the top of the screen. In subsequent versions I'm gonna make a more responsive "back to main page" link, that allows for the user to move back by simply hovering on the left side of the screen. I debated for a while what information vis-à-vis the portfolio items to put on there. Ultimately I decided what's currently visible is both succinct, gives a good overview and is centralized - allowing for the user to not have to go to Github and dig around themselves.
+
+My "controller" in my model-view-controller is Python and Flask. For the sake of consistency I almost exclusively use Flask's routes in order to navigate the user between pages. For the "portfolio" route I use SQLAlchemy's ORM in order to make raw SQL queries directly in the application. This is how I query the database for information, which I hand to the "portfolio-page" before it gets rendered. Using Jinja syntax on there each portfolio item gets stacked on top of one another in a loop, thus creating previously mentioned effect. 
+
+For the backend I use a PostgreSQL database hosted on Render. There I have a table that holds all of the information concerning the portfolio page. For a while I debated which sites to use to host my frontend and backend, but with Render I could keep everything on one site and thus every aspect of its administration proved easier to keep oversight on.  The database's infrastructure I've created through "psql" - the command-line tool kit - along with some Render-specific syntax. This allowed me to open and interact with the database directly in the CLI. It's also on there that I've included my environment variable for the database-url to ensure the program is already coded most defensively. Preparing for malicious attacks, e.g. SQL injection attacks - thus adhering to industry best practices and preparing for subsequent versions where the database will be receiving user input. Originally I was gonna have the actual pictures in my database, but as Render space on the server that's hosting is quite limited, I in the end decided to merely have the addresses on there.
